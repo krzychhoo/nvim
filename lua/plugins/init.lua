@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = 'BufWritePre', -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
@@ -28,6 +28,8 @@ return {
 },
 
   --  These are some examples, uncomment them if you want to see them work!
+
+  -- Configure lspconfig to use the desired LSP servers
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -35,24 +37,38 @@ return {
       require "configs.lspconfig"
     end,
   },
-  --
-  -- {
-  -- 	"williamboman/mason.nvim",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"lua-language-server", "stylua",
-  -- 			"html-lsp", "css-lsp" , "prettier"
-  -- 		},
-  -- 	},
-  -- },
-  --
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+
+  -- Configuring mason.nvim to automatically install certain LSP servers
+  {
+  	"williamboman/mason.nvim",
+  	opts = {
+  		ensure_installed = {
+        -- Default LSPs
+  			"lua-language-server", "stylua",
+  			-- "html-lsp", "css-lsp" , 
+        "prettier",
+        -- My custom ones
+        "clangd", "clang-format"
+  		},
+  	},
+  },
+
+  -- Pretty syntax highlighting
+  {
+  	"nvim-treesitter/nvim-treesitter",
+  	opts = {
+  		ensure_installed = {
+        -- Nvim configuration
+  			"vim",
+        "lua",
+        "vimdoc",
+        -- Web stuff (eww)
+        "html",
+        "css",
+        -- Real programming
+        "cpp",
+        "c"
+  		},
+  	},
+  },
 }
