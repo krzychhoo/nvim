@@ -14,6 +14,7 @@ return {
         -- Real programming
         "cpp",
         "c",
+        "toml",
       },
     },
   },

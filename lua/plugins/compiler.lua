@@ -1,3 +1,5 @@
+require "configs.compiler"
+
 return {
   { -- This plugin
     "Zeioth/compiler.nvim",
